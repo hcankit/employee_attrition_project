@@ -1,0 +1,116 @@
+# Data Files
+training_data_file: wa_fn_usec_hr_employee_attrition_tsv.csv
+
+
+# Variables
+# The variable we are attempting to predict (Attrition)
+target: attrition
+
+pipeline_name: employee_attrition_model
+pipeline_save_file: employee_attrition__model_output_v
+
+features:      # final features to be use
+  - age
+  - businesstravel
+  - dailyrate
+  - department
+  - distancefromhome
+  - education
+  - educationfield
+  - employeecount
+  - environmentsatisfaction
+  - gender
+  - hourlyrate
+  - jobinvolvement
+  - joblevel
+  - jobrole
+  - jobsatisfaction
+  - maritalstatus
+  - monthlyincome
+  - monthlyrate
+  - numcompaniesworked
+  - overtime
+  - percentsalaryhike
+  - performancerating
+  - relationshipsatisfaction
+  - standardhours
+  - stockoptionlevel
+  - totalworkingyears
+  - trainingtimeslastyear
+  - worklifebalance
+  - yearsatcompany
+  - yearsincurrentrole
+  - yearssincelastpromotion
+  - yearswithcurrmanager
+  - employeenumber
+  - over18
+
+unused_fields:  # Features to drop before pipeline
+  - employeenumber
+  - over18
+
+# Features inside processing pipeline
+
+# weekday_var: weekday  # first imputatation , then --> Mapping
+# weathersit_var: weathersit
+
+# gender_var: Sex
+
+# title_var: Title
+
+# age_var: Age 
+
+
+# # Instantiate mapper for all ordinal categorical features
+
+businesstravel_mappings:
+  Travel_Rarely: 0
+  Travel_Frequently: 1
+  Non-Travel: 2 
+
+department_mappings:
+  Sales: 0
+  Research & Development: 1
+  Human Resources: 2
+  
+educationfield_mappings:
+  Life Sciences: 0
+  Other: 1
+  Medical: 2
+  Marketing: 3
+  Technical Degree: 4
+  Human Resources: 5
+
+gender_mappings:
+  Female: 0
+  Male: 1
+
+jobrole_mappings:
+  Sales Executive: 0
+  Research Scientist: 1
+  Laboratory Technician: 2
+  Manufacturing Director: 3
+  Healthcare Representative: 4
+  Manager: 5
+  Sales Representative: 6
+  Research Director: 7
+  Human Resources: 8
+
+maritalstatus_mappings:
+  Single: 0
+  Married: 1
+  Divorced: 2
+
+overtime_mappings:
+  Yes: 1
+  No: 0
+  
+# set train/test split
+test_size: 0.20
+
+# to set the random seed
+random_state: 42
+# alogrithm parameters
+n_estimators: 100
+max_depth: 10
+max_features: 3
