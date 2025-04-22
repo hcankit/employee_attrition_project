@@ -74,6 +74,7 @@ jobs:
   push-image:
     needs: [train, build] #[train, test, build]
     runs-on: ubuntu-latest
+    environment: employee_attrition
     steps:
     - name: Repo Checkout
       uses: actions/checkout@v2
