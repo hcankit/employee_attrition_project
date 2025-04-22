@@ -10,6 +10,7 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+    environment: employee_attrition
 
     steps:
       - name: Pull Docker Image
