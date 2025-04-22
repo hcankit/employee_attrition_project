@@ -83,12 +83,14 @@ jobs:
         name: my-build-package
         path: employee_attrition_model_api
 
+    # - name: Login to Docker hub
+    #   env:
+    #     DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
+    #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS_TOKEN }}
+    #   run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Login to Docker hub
-      env:
-        DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS_TOKEN }}
-      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
-
+      run: echo "${{ secrets.DOCKER_PASS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USER_NAME }}" --password-stdin
+      
     - name: Build the Docker image for Fastapi app
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
